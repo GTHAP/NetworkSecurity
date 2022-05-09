@@ -1,3 +1,5 @@
+# This code does not belong to me
+
 import threading
 import socket
 
