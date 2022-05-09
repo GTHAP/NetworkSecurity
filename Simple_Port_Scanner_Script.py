@@ -1,4 +1,5 @@
 # This code does not belong to me
+# This code is for learning purpose only
 
 import socket
 import threading
